@@ -47,7 +47,8 @@ class QueueOnce(Task):
     @property
     def redis(self):
         return get_redis(
-            getattr(self.config, "ONCE_REDIS_URL", "redis://localhost:6379/0"))
+            getattr(self.config, "ONCE_REDIS_URL", "redis://localhost:6379/0"),
+            ssl=getattr(self.config, "ONCE_REDIS_USE_SSL", False))
 
     @property
     def default_timeout(self):

@@ -23,8 +23,9 @@ def parse_redis_details(url):
     return details
 
 
-def get_redis(url):
-    return StrictRedis(**(parse_redis_details(url)))
+def get_redis(url, **kwargs):
+    kwargs.update(parse_redis_details(url))
+    return StrictRedis(**kwargs)
 
 
 def now_unix():
